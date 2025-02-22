@@ -41,3 +41,11 @@
     -->
   </body>
 </html>
+
+<script>
+  var redirectTo = window.location.pathname;
+  if (redirectTo !== "/") {
+    window.location.replace("/starry-memories" + redirectTo);
+  }
+</script>
+
