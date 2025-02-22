@@ -1,38 +1,407 @@
-.App {
+/* Global Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #3d2c8d, #6a0572);
+  color: #fff;
   text-align: center;
+  margin: 0;
+  padding: 0;
+  transition: filter 0.3s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Main Container */
+.container {
+  max-width: 900px;
+  width: 90%;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Header */
+h1 {
+  font-size: 2.3rem;
+  margin-bottom: 15px;
+  color: #ffcc70;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Input Section */
+.input-section {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.input-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #ffcc70;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffcc70;
+}
+
+/* Adjust input and button for mobile/laptop */
+input {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+button {
+  background: #d72638;
+  border: none;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+  max-width: 300px;
+}
+
+button:hover {
+  background: #a32129;
+}
+
+/* Memory Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 10px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Memory Cards */
+.memory-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.memory-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.date-time {
+  font-size: 0.85rem;
+  color: #ffcc70;
+  margin-bottom: 5px;
+}
+
+.note {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* Image Container */
+.image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 500px;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  text-align: center;
+  color: #fff;
+}
+
+/* Adjust modal image for all screens */
+.modal img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 280px;
+}
+
+/* Modal text adjustments */
+.modal h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #ffcc70;
+}
+
+.modal p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.close-btn {
+  background: #d72638;
+  border: none;
+  padding: 8px 15px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+
+.close-btn:hover {
+  background: #a32129;
+}
+
+/* Blur effect when modal is open */
+body.modal-open {
+  filter: blur(5px);
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .modal {
+    width: 90%;
+    max-width: 400px;
+    padding: 15px;
+  }
+
+  .modal img {
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 98%;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .modal {
+    width: 95%;
+    max-width: 350px;
+    padding: 12px;
+  }
+
+  .modal img {
+    max-height: 200px;
+  }
+
+  .modal h3 {
+    font-size: 1rem;
+  }
+
+  .modal p {
+    font-size: 0.9rem;
+  }
+
+  .close-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Memory Card */
+.memory-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 0.3s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  position: relative; /* Needed for trash icon placement */
+}
+
+.memory-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Trash Icon (Delete Button) */
+.trash-icon {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #ff4444;
+  transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.trash-icon:hover {
+  color: #cc0000;
+  transform: scale(1.1);
+}
+
+/* Fade-out effect when deleting */
+.memory-card.removing {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 500px;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  text-align: center;
+  color: #fff;
+}
+
+/* Adjust modal image for all screens */
+.modal img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 280px;
+}
+
+/* Modal text adjustments */
+.modal h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #ffcc70;
+}
+
+.modal p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.close-btn {
+  background: #d72638;
+  border: none;
+  padding: 8px 15px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+
+.close-btn:hover {
+  background: #a32129;
+}
+
+/* Blur effect when modal is open */
+body.modal-open {
+  filter: blur(5px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .modal {
+    width: 90%;
+    max-width: 400px;
+    padding: 15px;
+  }
+
+  .modal img {
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .modal {
+    width: 95%;
+    max-width: 350px;
+    padding: 12px;
+  }
+
+  .modal img {
+    max-height: 200px;
+  }
+
+  .modal h3 {
+    font-size: 1rem;
+  }
+
+  .modal p {
+    font-size: 0.9rem;
+  }
+
+  .close-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
   }
 }
