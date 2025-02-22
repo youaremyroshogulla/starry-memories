@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/starry-memories/static/css/main.d31a8c12.css",
+    "main.js": "/starry-memories/static/js/main.1f6608db.js",
+    "index.html": "/starry-memories/index.html",
+    "main.d31a8c12.css.map": "/starry-memories/static/css/main.d31a8c12.css.map",
+    "main.1f6608db.js.map": "/starry-memories/static/js/main.1f6608db.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d31a8c12.css",
+    "static/js/main.1f6608db.js"
+  ]
+}
